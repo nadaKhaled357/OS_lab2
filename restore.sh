@@ -2,7 +2,10 @@
 
 if [ $# -ne 2 ]
 then
-  echo "Usage: $0 dir malicious_dir"
+  echo
+  echo "$0 needs 2 arguments"
+  echo "  Eg."
+  echo "          $0 dir malicious_dir"
   exit 1
 fi
 
@@ -11,7 +14,7 @@ malicious_dir=$2
 
 while true
 do
-  count=$(ls "$malicious_dir" | wc -l)
+  count=`ls "$malicious_dir" | wc -l`
   if [ $count -eq 0 ]
   then
     echo "No malicious files to review."
@@ -33,7 +36,7 @@ do
     continue
   fi
 
-  file=$(ls "$malicious_dir" | head -n $choice | tail -n 1)
+  file=`ls "$malicious_dir" | head -n $choice | tail -n 1`
   echo "1) Restore this file back to $dir"
   echo "2) Permanently delete this file"
   echo "3) Leave this file as it is"
